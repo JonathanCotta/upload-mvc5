@@ -1,0 +1,49 @@
+﻿@model IEnumerable<UploadProject.Models.Domain.File>
+@{
+    ViewBag.Title = "Files";
+}
+
+<h2>Files</h2>
+
+<div class="row">
+    <div class="col-sm-1 col-sm-offset-11">
+        <a href="/Files/Upload" class="btn btn-success">
+            <span class="glyphicon glyphicon-cloud-upload"> Upload</span>
+        </a>
+    </div>
+</div>
+
+<hr />
+<table class="table-striped table">
+    <thead>
+        <tr>
+            <th>
+                File Name
+            </th>
+            <th>
+                MIME Type
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var file in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(f => file.FileName)
+                </td>
+                <td>
+                    @Html.DisplayFor(f => file.MimeType)
+                </td>
+                <td>
+                    @Html.ActionLink("Download", "Download", new { id = file.FileId }) |
+                    @Html.ActionLink("View", "Show", new { id = file.FileId })
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "File Upload";
+}
+
+<h2>File Upload</h2>
+
+@using (Ajax.BeginForm("Upload", "Files", new AjaxOptions { HttpMethod = "POST" }, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-10">
+            <input type="file" name="file">
+            <br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-10">
+            <button type="submit"  class="btn btn-info">Send</button>
+            <a href="/Files/Index" class="btn btn-default">Back</a>
+        </div>
+    </div>
+
+}
+
